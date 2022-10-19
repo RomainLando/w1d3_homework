@@ -17,8 +17,8 @@ def descriptions(tasks_list):
     descs = [ job["description"] for job in tasks_list]
     return descs
 
-def task_by_time(tasks_list, time):
-    jobs = [job for job in tasks_list if job["time_taken"] < time]
+def task_by_time(time):
+    jobs = [job for job in tasks if job["time_taken"] < time]
     return jobs
 
 def task_by_desc(desc):
@@ -33,6 +33,21 @@ def update_task(desc):
 def add_task(task):
     tasks.append(task)
 
+
+# Print a list of uncompleted tasks
+print(to_do(tasks))
+# Print a list of completed tasks
+print(done_jobs(tasks))
+# Print a list of all task descriptions
+print(descriptions(tasks))
+# Print a list of tasks where time_taken is at least a given time
+print(task_by_time(30))
+# Print any task with a given description
+print(task_by_desc("Feed Cat"))
+# Given a description update that task to mark it as complete.
+update_task("Clean Windows")
+print(tasks)
+# Add a task to the list
 new_task = {
     "description" : "Mop floors",
     "completed" : False,
